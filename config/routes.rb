@@ -14,6 +14,12 @@ Rails.application.routes.draw do
     # also, the controller is hardcoding each individual product in an instance variable.
     get "/product_1" => "products#list_first_product"
 
+    #display any single product using a QUERY parameter
+    get "/products" => "products#list_product_by_id_query_param"
+
+    #display any single product using a URL SEGMENT parameter
+    get "/products/:product_id" => "products#list_product_by_id_url_segment"
+
   end
 
 end

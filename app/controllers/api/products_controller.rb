@@ -10,4 +10,16 @@ class Api::ProductsController < ApplicationController
     render "first_product.json.jb"
   end
 
+  def list_product_by_id_query_param
+    @product = Product.find(params[:product_id])
+    @product = @product.slice(:id, :name, :price, :image_url, :description)
+    render "product_by_id.json.jb"
+  end
+
+  def list_product_by_id_url_segment
+    @product = Product.find(params[:product_id])
+    @product = @product.slice(:id, :name, :price, :image_url, :description)
+    render "product_by_id.json.jb"
+  end
+
 end
