@@ -1,25 +1,71 @@
 class Api::ProductsController < ApplicationController
-
-  def list_all_products
+  def index
     @products = Product.all
-    render "all_products.json.jb"
+    render "index.json.jb"
+  end
+  
+  def show
+    @product = Product.find(params[:id])
+    render "show.json.jb"
+  end
+  
+  def create
+    @product = Product.new(
+      :name => params[:name],
+      :price => params[:price],
+      :image_url => params[:image_url],
+      :description => params[:description]
+    )
+    # DO NOT FORGET TO SAVE YOUR NEW PRODUCT
+    @product.save
+    render "show.json.jb"
+  end
+  
+  def update
+    @product = Product.find_by(:id => params[:id])
+    
+    # set the product's attribute to either the new value, or what it already was if no new value is passed in (aka new value == nil) 
+    @product.name = params[:name] || @product.name
+    @product.price = params[:price] || @product.price
+    @product.image_url = params[:image_url] || @product.image_url
+    @product.description = params[:description] || @product.description
+    
+    # SAVE YOUR UPDATED PRODUCT TO THE DB
+    @product.save
+    # SHOW YOUR NEWLY UPDATED PRODUCT
+    render "show.json.jb"
+  end
+  
+  def destroy
+    @product = Product.find_by(:id => params[:id])
+    @product.destroy
+    # NO NEED TO SAVE A DELETED PROJECT THAT NO LONGER EXISTS
+    render :json => { :message => "Product was destroyed!"}
+    # render json: { :message => "Product was destroyed!"}
   end
 
-  def list_first_product
-    @product = Product.first
-    render "first_product.json.jb"
-  end
 
-  def list_product_by_id_query_param
-    @product = Product.find(params[:product_id])
-    @product = @product.slice(:id, :name, :price, :image_url, :description)
-    render "product_by_id.json.jb"
-  end
+  
+  # def list_all_products
+  #   @products = Product.all
+  #   render "all_products.json.jb"
+  # end
 
-  def list_product_by_id_url_segment
-    @product = Product.find(params[:product_id])
-    @product = @product.slice(:id, :name, :price, :image_url, :description)
-    render "product_by_id.json.jb"
-  end
+  # def list_first_product
+  #   @product = Product.first
+  #   render "first_product.json.jb"
+  # end
+
+  # def list_product_by_id_query_param
+  #   @product = Product.find(params[:product_id])
+  #   @product = @product.slice(:id, :name, :price, :image_url, :description)
+  #   render "product_by_id.json.jb"
+  # end
+
+  # def list_product_by_id_url_segment
+  #   @product = Product.find(params[:product_id])
+  #   @product = @product.slice(:id, :name, :price, :image_url, :description)
+  #   render "product_by_id.json.jb"
+  # end
 
 end

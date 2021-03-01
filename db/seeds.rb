@@ -8,4 +8,4 @@
 
 # new_seeded_product = Product.create({:name => "sneakers", :price => 80, :image_url => "sneaker_image_1", :description => "white leather sneakers with minimal design."})
 
-# new_seeded_product = Product.create({:name => "boots", :price => 130, :image_url => "boots_image_2", :description => "waterproof leather winter boots"})
+# new_seeded_product = Product.create({:name => "socks", :price => 12, :image_url => "socks_image", :description => "cozy wool socks with shapes pattern"})
