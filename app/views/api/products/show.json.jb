@@ -9,4 +9,5 @@
 #     :total => @product.total
 # }
 
-# render :partial => "product.json.jb", :locals => { @product: product }
+render :partial => "product.json.jb", :locals => { product: @product }
+# :locals => { product in the partial: product to reference in the view }
