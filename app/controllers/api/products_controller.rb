@@ -14,7 +14,8 @@ class Api::ProductsController < ApplicationController
       :name => params[:name],
       :price => params[:price],
       :image_url => params[:image_url],
-      :description => params[:description]
+      :description => params[:description],
+      :current_stock => params[:current_stock]
     )
     # DO NOT FORGET TO SAVE YOUR NEW PRODUCT
     @product.save
@@ -29,6 +30,7 @@ class Api::ProductsController < ApplicationController
     @product.price = params[:price] || @product.price
     @product.image_url = params[:image_url] || @product.image_url
     @product.description = params[:description] || @product.description
+    @product.current_stock = params[:current_stock] || @product.current_stock
     
     # SAVE YOUR UPDATED PRODUCT TO THE DB
     @product.save
@@ -41,20 +43,9 @@ class Api::ProductsController < ApplicationController
     @product.destroy
     # NO NEED TO SAVE A DELETED PROJECT THAT NO LONGER EXISTS
     render :json => { :message => "Product was destroyed!"}
-    # render json: { :message => "Product was destroyed!"}
   end
 
 
-  
-  # def list_all_products
-  #   @products = Product.all
-  #   render "all_products.json.jb"
-  # end
-
-  # def list_first_product
-  #   @product = Product.first
-  #   render "first_product.json.jb"
-  # end
 
   # def list_product_by_id_query_param
   #   @product = Product.find(params[:product_id])

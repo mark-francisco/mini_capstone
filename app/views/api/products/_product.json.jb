@@ -4,6 +4,7 @@
   price: product.price,
   image_url: product.image_url,
   description: product.description,
+  :current_stock => product.current_stock,
   :is_discounted? => product.is_discounted?,
   :tax => product.tax,
   :total => product.total
