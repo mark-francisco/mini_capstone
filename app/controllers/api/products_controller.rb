@@ -32,7 +32,7 @@ class Api::ProductsController < ApplicationController
     @product.description = params[:description] || @product.description
     @product.current_stock = params[:current_stock] || @product.current_stock
     
-    # SAVE YOUR UPDATED PRODUCT TO THE DB
+    # SAVE YOUR UPDATED PRODUCT TO THE DB. PRODUCT WILL ONLY SAVE IF THE VALIDATIONS IN THE MODEL PASS.
     @product.save
     # SHOW YOUR NEWLY UPDATED PRODUCT
     render "show.json.jb"
