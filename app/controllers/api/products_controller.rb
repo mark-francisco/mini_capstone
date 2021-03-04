@@ -18,8 +18,12 @@ class Api::ProductsController < ApplicationController
       :current_stock => params[:current_stock]
     )
     # DO NOT FORGET TO SAVE YOUR NEW PRODUCT
-    @product.save
-    render "show.json.jb"
+    # QUESTION: why does it save when you just type in @product.save?
+    if @product.save
+      render "show.json.jb"
+    else
+      render :json => { :errors => @product.errors.full_messages }, :status => 406
+    end
   end
   
   def update
@@ -33,9 +37,12 @@ class Api::ProductsController < ApplicationController
     @product.current_stock = params[:current_stock] || @product.current_stock
     
     # SAVE YOUR UPDATED PRODUCT TO THE DB. PRODUCT WILL ONLY SAVE IF THE VALIDATIONS IN THE MODEL PASS.
-    @product.save
-    # SHOW YOUR NEWLY UPDATED PRODUCT
-    render "show.json.jb"
+    if @product.save
+      # SHOW YOUR NEWLY UPDATED PRODUCT
+      render "show.json.jb"
+    else
+      render :json => { :errors => @product.errors.full_messages }, :status => 406
+    end
   end
   
   def destroy
