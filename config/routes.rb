@@ -15,13 +15,6 @@ Rails.application.routes.draw do
     patch "/products/:id/" => "products#update"
     delete "/products/:id" => "products#destroy"
 
-
-    #display any single product using a QUERY parameter
-    # get "/products" => "products#list_product_by_id_query_param"
-
-    #display any single product using a URL SEGMENT parameter
-    # get "/products/:product_id" => "products#list_product_by_id_url_segment"
-
   end
 
 end

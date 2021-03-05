@@ -1,6 +1,18 @@
 class Api::ProductsController < ApplicationController
   def index
+    
     @products = Product.all
+
+    # ACTIVE RECORD SEARCH QUERIES:
+    # search by name
+    if params[:search]
+      @products = Product.where("name ILIKE ?", "%#{params[:search]}%")
+    end
+    # sort products by price from lowest to highest
+    if params[:sort] == "price"
+      @products = @products.order(:price)
+    end
+
     render "index.json.jb"
   end
   
@@ -18,7 +30,7 @@ class Api::ProductsController < ApplicationController
       :current_stock => params[:current_stock]
     )
     # DO NOT FORGET TO SAVE YOUR NEW PRODUCT
-    # QUESTION: why does it save when you just type in @product.save?
+    # if @product.save is true, the @product.save method is executed.
     if @product.save
       render "show.json.jb"
     else
@@ -52,18 +64,5 @@ class Api::ProductsController < ApplicationController
     render :json => { :message => "Product was destroyed!"}
   end
 
-
-
-  # def list_product_by_id_query_param
-  #   @product = Product.find(params[:product_id])
-  #   @product = @product.slice(:id, :name, :price, :image_url, :description)
-  #   render "product_by_id.json.jb"
-  # end
-
-  # def list_product_by_id_url_segment
-  #   @product = Product.find(params[:product_id])
-  #   @product = @product.slice(:id, :name, :price, :image_url, :description)
-  #   render "product_by_id.json.jb"
-  # end
 
 end
