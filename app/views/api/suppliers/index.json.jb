@@ -1,0 +1,10 @@
+@suppliers.map do |supplier|
+  render :partial => "supplier.json.jb", :locals => { :supplier => :supplier }
+  # @!!!!!!~!!!!!! YOU STILL NEED TO BUILD OUT YOUR METHODS IN THE CONTROLLER !!!!!!!!!!!!!!!!!!!!!!!
+
+  # {
+  #   :name => supplier.name,
+  #   :email => supplier.email,
+  #   :phone_number => supplier.phone_number
+  # }
+end
