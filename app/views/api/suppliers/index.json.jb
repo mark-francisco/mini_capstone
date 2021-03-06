@@ -1,6 +1,6 @@
 @suppliers.map do |supplier|
-  render :partial => "supplier.json.jb", :locals => { :supplier => :supplier }
-  # @!!!!!!~!!!!!! YOU STILL NEED TO BUILD OUT YOUR METHODS IN THE CONTROLLER !!!!!!!!!!!!!!!!!!!!!!!
+  # :locals => { "whenever you see:" [variable name used in the partial] => "you should actually use:" [variable name from index.json.jb map function] }
+  render :partial => "supplier.json.jb", :locals => { :eggs => supplier }
 
   # {
   #   :name => supplier.name,

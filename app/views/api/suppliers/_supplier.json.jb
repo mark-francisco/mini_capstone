@@ -1,8 +1,8 @@
 {
   # IN THE RENDERED PARTIAL, EACH ITEM IS CALLED 'supplier'
-  :id => supplier.id,
-  :name => supplier.name,
-  :email => supplier.email,
-  :phone_number => supplier.phone_number,
+  :id => eggs.id,
+  :name => eggs.name,
+  :email => eggs.email,
+  :phone_number => eggs.phone_number,
 
 }
