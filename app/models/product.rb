@@ -9,7 +9,7 @@ class Product < ApplicationRecord
 
 
   def supplier
-    Supplier.where(:id => supplier_id)
+    Supplier.find_by(:id => supplier_id)
   end
 
   def is_discounted?
