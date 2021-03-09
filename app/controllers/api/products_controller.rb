@@ -1,6 +1,5 @@
 class Api::ProductsController < ApplicationController
   def index
-    
     @products = Product.all
 
     # ACTIVE RECORD SEARCH QUERIES:
