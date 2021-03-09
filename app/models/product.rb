@@ -1,11 +1,16 @@
 class Product < ApplicationRecord
-
-  # # https://stackoverflow.com/questions/7540601/rails-how-to-validate-file-format/7540785
   validates :current_stock, numericality: { :greater_than_or_equal_to => 0 }
   validates :price, numericality: { :greater_than => 0 }
   validates :name, :uniqueness => true
   validates :description, :length => { :minimum => 20, :maximum => 500}
 
+  # Product has many orders
+  has_many :orders
+
+  def orders
+    # you will find all the Orders associated with this Product.
+    Order.where(:product_id => id)
+  end
 
   ####### A PRODUCT BELONGS TO 1 SUPPLIER #########
   # THIS IS THE SAME AS DEFINING THE BELOW METHOD, CALLED "supplier".

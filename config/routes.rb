@@ -33,6 +33,8 @@ Rails.application.routes.draw do
     # SESSIONS
     post "/sessions" => "sessions#create"
 
+    # ORDERS
+    post "/orders" => "orders#create"
 
   end
 
