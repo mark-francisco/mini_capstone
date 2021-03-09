@@ -4,5 +4,6 @@
   :name => eggs.name,
   :email => eggs.email,
   :phone_number => eggs.phone_number,
+  # :products => eggs.products
 
 }

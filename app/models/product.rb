@@ -7,11 +7,18 @@ class Product < ApplicationRecord
   validates :description, :length => { :minimum => 20, :maximum => 500}
 
 
-  def supplier
-    # find the 1 Supplier where supplier.id == product.supplier_id 
-    # this method gets called from an instance of the Product class. thus, that product instance is used to assign the concept of "self."
-    Supplier.find_by(:id => supplier_id)
-  end
+  ####### A PRODUCT BELONGS TO 1 SUPPLIER #########
+  # THIS IS THE SAME AS DEFINING THE BELOW METHOD, CALLED "supplier".
+  # the "belongs_to" shortcut assumes that the foreign key of the product (the "many" thing) is named "supplier_id", b/c that is how it will find and connect the ONE "id" in supplier to the "supplier_id" of that specific product instance.
+  belongs_to :supplier
+
+  # find the 1 Supplier where supplier.id == product.supplier_id 
+  # this method gets called from an instance of Product. thus, that product instance is used to assign the concept of "self."
+  
+  # def supplier
+  #   Supplier.find_by(:id => supplier_id)
+  # end
+
 
   def images
     # find all of the images where images.product_id == product.id
