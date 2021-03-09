@@ -1,5 +1,5 @@
 {
-  # IN THE RENDERED PARTIAL, EACH ITEM IS CALLED 'supplier'
+  # IN THE RENDERED SUPPLIER PARTIAL, EACH ITEM IS CALLED 'eggs'
   :id => eggs.id,
   :name => eggs.name,
   :email => eggs.email,
