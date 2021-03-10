@@ -1,8 +1,8 @@
 class Supplier < ApplicationRecord
 
-  validates :name, :presence => true
-  validates :email, :presence => true
-  validates :phone_number, :presence => true
+  # validates :name, :presence => true
+  # validates :email, :presence => true
+  # validates :phone_number, :presence => true
 
   ####### A SUPPLIER HAS MANY PRODUCTS #########
   # THIS IS THE SAME AS DEFINING THE BELOW METHOD, CALLED "products".
