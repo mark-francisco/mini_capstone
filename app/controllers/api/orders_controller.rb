@@ -10,6 +10,7 @@ class Api::OrdersController < ApplicationController
   end
 
   def show
+    # you can use .user because you've defined an association (aka a model method) in your Order model
     if current_user && Order.find(params[:id]).user_id == current_user.id
       @order = Order.find(params[:id])
       render "show.json.jb"
