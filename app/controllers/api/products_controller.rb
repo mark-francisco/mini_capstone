@@ -14,6 +14,13 @@ class Api::ProductsController < ApplicationController
     if params[:sort] == "price"
       @products = @products.order(:price)
     end
+    # search by CATEGORY. you're filtering PRODUCTS by the CATEGORY you specify
+    if params[:category]
+      # find the Category.name that matches the params[:category] user inputted
+      category = Category.find_by(:name => params[:category]) 
+      # call that category's ".products" method to pull all of the products belonging to that category (uses a .where to search for products)
+      @products = category.products
+    end
 
     render "index.json.jb"
   end

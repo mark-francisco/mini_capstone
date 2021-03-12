@@ -4,6 +4,9 @@ class Product < ApplicationRecord
   validates :name, :uniqueness => true
   validates :description, :length => { :minimum => 20, :maximum => 500}
 
+  has_many :category_products
+  has_many :categories, :through => :category_products
+  
   # Product has many orders
   has_many :orders
 
