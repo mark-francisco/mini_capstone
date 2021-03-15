@@ -1,7 +1,7 @@
 class Order < ApplicationRecord
   # Order belongs to Product & User
   belongs_to :user
-  belongs_to :product
+  has_many :carted_products
 
   def user
     # you will find 1 User. an order only has 1 User.
